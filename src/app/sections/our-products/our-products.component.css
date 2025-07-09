@@ -1,0 +1,461 @@
+/* Import Google Fonts (ensure these are linked in your HTML <head>) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rubik:wght@400;500;600&display=swap');
+
+/* --- Product Page Container Base --- */
+.product-page-container {
+    background: linear-gradient(135deg, #f0f7f9 0%, #e8f3f5 100%); /* Consistent background */
+    padding: 6rem 1.5rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh; /* Ensure full viewport height */
+    display: flex;
+    flex-direction: column; /* Stack title and carousel */
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Subtle Background Shapes (Consistent) --- */
+.product-page-container::before,
+.product-page-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.product-page-container::before {
+    width: 300px;
+    height: 300px;
+    background-color: #4CAF50; /* Green accent */
+    top: -50px;
+    left: -50px;
+    transform: rotate(25deg);
+}
+
+.product-page-container::after {
+    width: 250px;
+    height: 250px;
+    background-color: #007BFF; /* Blue accent */
+    bottom: -50px;
+    right: -50px;
+    transform: rotate(-45deg);
+}
+
+/* --- Main Title Styling --- */
+.product-page-container h1 {
+    font-size: 3rem; /* Large, impactful title */
+    color: #1a237e; /* Dark professional blue */
+    margin-bottom: 3rem; /* More space below title */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.8rem;
+    z-index: 1; /* Ensure it's above background elements */
+}
+
+.product-page-container h1::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 90px; /* Longer underline */
+    height: 5px;
+    background-color: #ff8c00; /* Bright orange accent */
+    border-radius: 3px;
+}
+
+/* --- Carousel Wrapper --- */
+.carousel-wrapper {
+    width: 100%;
+    max-width: 1280px; /* Wider for more items visible */
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 1; /* Above background elements */
+    padding: 0 40px; /* Space for arrows */
+}
+
+.carousel-track {
+    display: flex;
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to items */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    gap: 2.5rem; /* Space between product cards */
+    padding-bottom: 1.5rem; /* Space for potential scroll indicator or bottom shadow */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Carousel Item (Product Card) Styling --- */
+.carousel-item {
+    flex: 0 0 auto; /* Do not grow, do not shrink, base on content */
+    width: 320px; /* Fixed width for each card */
+    background-color: #ffffff;
+    border-radius: 16px; /* Rounded corners */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 1.8rem; /* Inner padding */
+    text-align: center;
+    scroll-snap-align: center; /* Snap to center of item */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;;
+}
+
+.carousel-item:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.product-image-container {
+    width: 100%;
+    height: 220px; /* Fixed height for consistent image size */
+    overflow: hidden;
+    border-radius: 12px; /* Slightly less rounded than card */
+    margin-bottom: 1.5rem;
+    background-color: #f0f0f0; /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover .product-image-container img {
+    transform: scale(1.05); /* Zoom image on card hover */
+}
+
+.carousel-item h2 {
+    font-size: 1.6rem;
+    color: #1a237e;
+    margin-bottom: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.carousel-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1.2rem;
+    flex-grow: 1; /* Allow description to take available space */
+    font-family: 'Rubik', sans-serif;
+}
+
+.carousel-item a { /* Read more link */
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 0.4rem;
+    color: #007bff; /* Consistent blue link color */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    font-family: 'Rubik', sans-serif;
+}
+
+.carousel-item a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.carousel-item a svg {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+    fill: #007bff; /* Fill the SVG with the link color */
+}
+
+.carousel-item a:hover svg {
+    transform: translateX(5px); /* Move arrow on hover */
+    fill: #0056b3;
+}
+
+/* --- Carousel Arrows --- */
+.carousel-wrapper .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    color: #1a237e; /* Dark blue arrow color */
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 10; /* Ensure arrows are on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-wrapper .arrow.left {
+    left: 0;
+}
+
+.carousel-wrapper .arrow.right {
+    right: 0;
+}
+
+.carousel-wrapper .arrow:hover {
+    background-color: #007bff; /* Blue on hover */
+    color: #ffffff; /* White text on hover */
+    transform: translateY(-50%) scale(1.05); /* Slightly larger on hover */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* --- Product Modal Styling --- */
+.product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* High z-index to be on top */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.product-modal.show { /* Use a class added by Angular when modal is open */
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25); /* Stronger shadow for modal */
+    padding: 2.5rem;
+    max-width: 600px; /* Max width for modal content */
+    width: 90%; /* Responsive width */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(20px); /* Initial position for animation */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.product-modal.show .modal-content {
+    transform: translateY(0); /* Slide up on show */
+    opacity: 1;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem; /* Larger close button */
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.modal-img-wrapper {
+    width: 100%;
+    height: 250px; /* Fixed height for modal image */
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    background-color: #f0f0f0;
+}
+
+.modal-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: #1a237e;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+}
+
+.modal-footer {
+    width: 100%;
+    text-align: center;
+}
+
+.modal-action-btn {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+
+.modal-action-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .product-page-container {
+        padding: 4rem 1rem;
+    }
+
+    .product-page-container h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .product-page-container::before,
+    .product-page-container::after {
+        display: none; /* Hide background shapes on smaller screens */
+    }
+
+    .carousel-wrapper {
+        padding: 0 20px; /* Adjust padding for arrows */
+    }
+
+    .carousel-track {
+        gap: 1.5rem; /* Reduce gap between cards */
+        padding-bottom: 1rem;
+    }
+
+    .carousel-item {
+        width: 280px; /* Smaller card width */
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .product-image-container {
+        height: 180px; /* Smaller image height */
+    }
+
+    .carousel-item h2 {
+        font-size: 1.4rem;
+    }
+
+    .carousel-wrapper .arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .modal-content {
+        padding: 2rem;
+        border-radius: 15px;
+    }
+
+    .modal-img-wrapper {
+        height: 200px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .modal-content p {
+        font-size: 0.95rem;
+    }
+
+    .modal-action-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-page-container {
+        padding: 3rem 0.5rem;
+    }
+
+    .product-page-container h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-wrapper {
+        padding: 0 10px; /* Further reduce padding for arrows */
+    }
+
+    .carousel-track {
+        gap: 1rem;
+    }
+
+    .carousel-item {
+        width: 250px; /* Even smaller card width */
+        padding: 1.2rem;
+    }
+
+    .product-image-container {
+        height: 160px;
+    }
+
+    .carousel-item h2 {
+        font-size: 1.2rem;
+    }
+
+    .carousel-item p {
+        font-size: 0.85rem;
+    }
+
+    .carousel-wrapper .arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+    .modal-img-wrapper {
+        height: 180px;
+    }
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+}

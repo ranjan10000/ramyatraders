@@ -1,0 +1,268 @@
+/* Import Google Fonts for a fresh look */
+/* This @import is a reminder. The actual <link> tag must be in your HTML <head> */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rubik:wght@400;500;600&display=swap');
+
+/* --- Leadership Section Base --- */
+.leadership-section {
+    background: linear-gradient(135deg, #f0f7f9 0%, #e8f3f5 100%); /* Consistent light, cool gradient background */
+    padding: 6rem 1.5rem; /* Generous padding around the section */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    overflow: hidden; /* Hide any overflowing content from pseudo-elements */
+    position: relative; /* Needed for positioning pseudo-elements */
+    min-height: 100vh; /* Ensure the section takes at least the full viewport height */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack header and cards vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+}
+
+/* --- Subtle Background Shapes (Consistent with other sections) --- */
+/* These create the unique, organic "blob" shapes in the background */
+.leadership-section::before,
+.leadership-section::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position relative to the parent .leadership-section */
+    border-radius: 50%; /* Makes them circular (will be distorted by transform) */
+    opacity: 0.1; /* Make them semi-transparent */
+    z-index: 0; /* Place them behind the main content */
+}
+
+.leadership-section::before {
+    width: 350px; /* Size of the first blob */
+    height: 350px;
+    background-color: #4CAF50; /* Green accent color */
+    top: -80px; /* Position off-screen slightly */
+    left: -80px;
+    transform: rotate(15deg); /* Rotate for an organic shape */
+}
+
+.leadership-section::after {
+    width: 300px; /* Size of the second blob */
+    height: 300px;
+    background-color: #007BFF; /* Blue accent color */
+    bottom: -60px; /* Position off-screen slightly */
+    right: -60px;
+    transform: rotate(-35deg); /* Rotate for an organic shape */
+}
+
+/* --- Section Header Styling --- */
+.section-header {
+    text-align: center; /* Center align text within the header */
+    margin-bottom: 4rem; /* Space below the header before the cards */
+    max-width: 800px; /* Max width for the header text to prevent it from stretching too wide */
+    z-index: 1; /* Ensure header is above background elements */
+}
+
+.section-header h2 {
+    font-size: 3rem; /* Large, impactful title */
+    color: #1a237e; /* Dark professional blue for headings */
+    margin-bottom: 1rem; /* Space below the main title */
+    font-family: 'Poppins', sans-serif; /* Consistent heading font */
+    font-weight: 700; /* Bold font weight */
+    position: relative; /* Needed for positioning the underline pseudo-element */
+    padding-bottom: 0.8rem; /* Space for the underline */
+}
+
+.section-header h2::after {
+    content: ''; /* Required for pseudo-element */
+    position: absolute; /* Position relative to the h2 */
+    left: 50%; /* Start from the horizontal center */
+    bottom: 0; /* Position at the bottom of the h2 */
+    transform: translateX(-50%); /* Adjust to truly center the underline */
+    width: 100px; /* Length of the underline */
+    height: 5px; /* Thickness of the underline */
+    background-color: #ff8c00; /* Bright orange accent color */
+    border-radius: 3px; /* Rounded ends for the underline */
+}
+
+.section-header .sub-heading {
+    font-size: 1.25rem; /* Larger sub-heading font size */
+    color: #666; /* Softer color for sub-heading */
+    font-family: 'Rubik', sans-serif; /* Consistent body font */
+    line-height: 1.6; /* Good line spacing for readability */
+    margin-top: 1rem; /* Space above the sub-heading */
+}
+
+/* --- Cards Container (CSS Grid Layout) --- */
+.cards-container {
+    display: grid; /* Use CSS Grid for powerful layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns: min 300px, max 1fr */
+    gap: 2.5rem; /* Space between grid items (cards) */
+    max-width: 1200px; /* Max width for the entire grid of cards */
+    width: 100%; /* Take full width up to max-width */
+    z-index: 1; /* Ensure cards are above background elements */
+}
+
+/* --- Info Card Styling --- */
+.info-card {
+    background-color: #ffffff; /* White background for the cards */
+    border-radius: 16px; /* Rounded corners for the cards */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Soft, clean shadow */
+    padding: 2.5rem; /* Inner padding within each card */
+    display: flex; /* Use flexbox for content inside the card */
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start; /* Align content to the left within the card */
+    text-align: left; /* Align text to the left */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    height: 100%; /* Ensures all cards in a row have the same height */
+}
+
+.info-card:hover {
+    transform: translateY(-10px); /* Lifts the card slightly on hover */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18); /* Enhanced shadow on hover */
+}
+
+.info-card h3 {
+    font-size: 1.8rem; /* Card title font size */
+    color: #0d47a1; /* Deep blue for card titles */
+    margin-bottom: 1rem; /* Space below card title */
+    font-family: 'Poppins', sans-serif; /* Consistent heading font */
+    font-weight: 600; /* Semi-bold */
+    position: relative; /* Needed for positioning the underline */
+    padding-bottom: 0.5rem; /* Space for the underline */
+}
+
+.info-card h3::after {
+    content: '';
+    position: absolute;
+    left: 0; /* Align underline to the left of the title */
+    bottom: 0;
+    width: 50px; /* Shorter underline for card titles */
+    height: 3px; /* Thinner underline */
+    background-color: #ff8c00; /* Orange accent color */
+    border-radius: 2px;
+}
+
+.info-card p {
+    font-size: 1rem; /* Paragraph font size */
+    line-height: 1.7; /* Line spacing */
+    color: #666; /* Soft gray for body text */
+    margin-bottom: 0; /* Remove default paragraph margin */
+    font-family: 'Rubik', sans-serif; /* Consistent body font */
+}
+
+.info-card ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    font-family: 'Rubik', sans-serif; /* Consistent body font */
+    color: #666; /* Soft gray for list items */
+    font-size: 0.95rem; /* Slightly smaller font for lists */
+    line-height: 1.8; /* Good line spacing for list items */
+}
+
+.info-card ul li {
+    position: relative; /* Needed for custom bullet positioning */
+    padding-left: 1.8rem; /* Space for custom bullet */
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.info-card ul li::before {
+    content: '\2713'; /* Unicode checkmark character */
+    position: absolute;
+    left: 0; /* Position the checkmark to the left */
+    top: 0;
+    color: #4CAF50; /* Green color for the checkmark */
+    font-size: 1.1rem; /* Size of the checkmark */
+    font-weight: bold; /* Make the checkmark bold */
+}
+
+.info-card strong {
+    color: #007bff; /* Consistent primary blue for emphasized text */
+    font-weight: 600; /* Semi-bold for strong text */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Adjustments for medium screens (tablets) */
+    .leadership-section {
+        padding: 4rem 1rem; /* Reduce overall section padding */
+    }
+
+    .leadership-section::before,
+    .leadership-section::after {
+        display: none; /* Hide decorative background shapes on smaller screens for simplicity and performance */
+    }
+
+    .section-header {
+        margin-bottom: 3rem; /* Reduce space below header */
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem; /* Reduce main title size */
+    }
+
+    .section-header .sub-heading {
+        font-size: 1.1rem; /* Reduce sub-heading size */
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minimum card size */
+        gap: 2rem; /* Reduce gap between cards */
+    }
+
+    .info-card {
+        padding: 2rem; /* Reduce card inner padding */
+        border-radius: 12px; /* Slightly less rounded corners */
+    }
+
+    .info-card h3 {
+        font-size: 1.6rem; /* Reduce card title size */
+    }
+
+    .info-card p {
+        font-size: 0.9rem; /* Reduce paragraph font size */
+    }
+}
+
+@media (max-width: 768px) { /* Adjustments for small screens (mobile phones) */
+    .leadership-section {
+        padding: 3rem 0.5rem; /* Further reduce overall section padding */
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem; /* Further reduce space below header */
+    }
+
+    .section-header h2 {
+        font-size: 2rem; /* Further reduce main title size */
+    }
+
+    .section-header .sub-heading {
+        font-size: 1rem; /* Further reduce sub-heading size */
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+        gap: 1.5rem; /* Reduce gap between stacked cards */
+    }
+
+    .info-card {
+        padding: 1.8rem; /* Further reduce card inner padding */
+        border-radius: 10px; /* Even less rounded corners */
+        align-items: center; /* Center content horizontally within the card */
+        text-align: center; /* Center text within the card */
+    }
+
+    .info-card h3 {
+        font-size: 1.4rem; /* Further reduce card title size */
+    }
+
+    .info-card h3::after {
+        left: 50%; /* Center underline for card titles */
+        transform: translateX(-50%);
+    }
+
+    .info-card p,
+    .info-card ul {
+        font-size: 0.85rem; /* Further reduce paragraph and list font size */
+    }
+
+    .info-card ul li {
+        padding-left: 0; /* Remove left padding for list items when centered */
+        text-align: center; /* Center list item text */
+    }
+    .info-card ul li::before {
+        content: ''; /* Hide custom checkmark if it doesn't look good with centered text */
+        /* Alternatively, you could try to center it above the text, but removing might be cleaner */
+    }
+}

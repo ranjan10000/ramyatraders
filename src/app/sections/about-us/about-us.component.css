@@ -1,0 +1,208 @@
+/* Import Google Fonts (ensure these are linked in your HTML <head>) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rubik:wght@400;500;600&display=swap');
+
+/* --- About Section Base --- */
+.about-section {
+    background: linear-gradient(135deg, #f0f7f9 0%, #e8f3f5 100%); /* Same subtle gradient background */
+    padding: 6rem 1.5rem; /* Consistent padding */
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    min-height: 90vh; /* Make it prominent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Subtle Background Shapes (Same as Contact Section) --- */
+.about-section::before,
+.about-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.about-section::before {
+    width: 300px;
+    height: 300px;
+    background-color: #4CAF50; /* Green accent */
+    top: -50px;
+    left: -50px;
+    transform: rotate(25deg);
+}
+
+.about-section::after {
+    width: 250px;
+    height: 250px;
+    background-color: #007BFF; /* Blue accent */
+    bottom: -50px;
+    right: -50px;
+    transform: rotate(-45deg);
+}
+
+/* --- Main Content Container (The "Card" housing everything) --- */
+.about-container {
+    background-color: #ffffff; /* Solid white background for the card */
+    border-radius: 20px; /* Rounded corners for the main card */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15); /* Prominent, clean shadow */
+    padding: 4rem; /* Generous padding inside the card */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px; /* Max width for the content */
+    width: 100%;
+    margin: 0 auto;
+    gap: 3.5rem; /* Space between image and text */
+    position: relative;
+    z-index: 1; /* Ensure content is above background shapes */
+}
+
+/* --- Image Styling within the Card --- */
+.about-image {
+    flex: 1 1 450px; /* Flexible width for the image side */
+    position: relative;
+    border-radius: 15px; /* Slightly rounded edges for the image itself */
+    overflow: hidden; /* Ensures image respects border-radius */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image within the card */
+    transition: transform 0.3s ease-in-out; /* For hover effect */
+}
+
+.about-image img {
+    width: 100%;
+    height: 400px; /* Fixed height for consistent look */
+    object-fit: cover; /* Ensures image covers the area */
+    display: block;
+}
+
+.about-image:hover {
+    transform: scale(1.02); /* Subtle zoom on hover */
+}
+
+
+/* --- Text Content Styling within the Card --- */
+.about-text {
+    flex: 1 1 600px; /* Flexible width for the text content */
+    font-family: 'Rubik', sans-serif; /* Consistent body font */
+    color: #333;
+}
+
+.about-text h1 {
+    font-size: 2.8rem;
+    color: #1a237e; /* Dark professional blue for heading */
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif; /* Consistent heading font */
+    font-weight: 700;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.about-text h1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 70px; /* Consistent underline width */
+    height: 5px; /* Consistent underline thickness */
+    background-color: #ff8c00; /* Bright orange accent */
+    border-radius: 3px;
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.about-text strong {
+    color: #007bff; /* Consistent blue for strong text */
+    font-weight: 600;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column; /* Stack image and text */
+        padding: 3rem; /* Adjust card padding */
+        gap: 2.5rem;
+        text-align: center; /* Center content when stacked */
+    }
+
+    .about-image {
+        flex: 1 1 auto;
+        width: 90%; /* Control image width on tablets */
+        max-width: 450px;
+    }
+    .about-image img {
+        height: 300px; /* Adjust image height for tablets */
+    }
+
+    .about-text {
+        flex: 1 1 auto;
+        padding-top: 1rem; /* Add some space if needed */
+    }
+
+    .about-text h1 {
+        font-size: 2.2rem;
+        text-align: center; /* Center title when stacked */
+    }
+
+    .about-text h1::after {
+        left: 50%;
+        transform: translateX(-50%); /* Center underline */
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+    }
+
+    .about-section::before,
+    .about-section::after {
+        display: none; /* Hide background shapes on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 0.5rem;
+    }
+
+    .about-container {
+        padding: 2rem;
+        border-radius: 15px; /* Slightly less rounded */
+    }
+
+    .about-image img {
+        height: 250px; /* Adjust image height for mobile */
+    }
+
+    .about-text h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- Animation Styles --- */
+/* Re-using the same fade-in-up from contact section */
+@keyframes fadeInSlideUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.about-image.animate-fade-in,
+.about-text.animate-fade-in {
+    animation: fadeInSlideUp 1s ease forwards;
+    opacity: 0;
+}
+
+/* Stagger animations for a better effect */
+.about-image.animate-fade-in {
+    animation-delay: 0.3s;
+}
+
+.about-text.animate-fade-in {
+    animation-delay: 0.5s;
+}

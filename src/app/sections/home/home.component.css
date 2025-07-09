@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+.home-banner {
+  position: relative;
+  height: 100vh;
+  background-image: url('/assets/home-banner.png'); /* ✅ Your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black transparent layer */
+  z-index: 1;
+}
+
+.content {
+  z-index: 2;
+}
+
+.content {
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
