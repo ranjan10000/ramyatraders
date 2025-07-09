@@ -1,1 +1,65 @@
-/* Add your header component styles here */
+/* Navbar styles */
+.navbar {
+  background-color: #eaf6f8 !important;
+  height: 80px;
+  animation: fadeSlideDown 0.8s ease-in-out;
+}
+
+/* Logo animation */
+.navbar img {
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.navbar img:hover {
+  transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Nav brand text */
+.navbar-brand {
+  color: #005086;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Nav link styles */
+.navbar-nav > li > a {
+  color: #10247d !important;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 1.2s ease;
+}
+
+.navbar-nav > li > a:hover {
+  color: #007bff !important;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Keyframe animations */
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

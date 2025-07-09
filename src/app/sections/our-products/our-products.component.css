@@ -223,120 +223,115 @@
 
 /* --- Product Modal Styling --- */
 .product-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* High z-index to be on top */
-    backdrop-filter: blur(5px); /* Frosted glass effect */
-    -webkit-backdrop-filter: blur(5px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.product-modal.show { /* Use a class added by Angular when modal is open */
-    opacity: 1;
-    visibility: visible;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 .modal-content {
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25); /* Stronger shadow for modal */
-    padding: 2.5rem;
-    max-width: 600px; /* Max width for modal content */
-    width: 90%; /* Responsive width */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform: translateY(20px); /* Initial position for animation */
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.4s ease;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.product-modal.show .modal-content {
-    transform: translateY(0); /* Slide up on show */
+    transform: scale(0.95);
+  }
+  to {
     opacity: 1;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 2.5rem; /* Larger close button */
-    color: #888;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-    color: #333;
+    transform: scale(1);
+  }
 }
 
 .modal-img-wrapper {
-    width: 100%;
-    height: 250px; /* Fixed height for modal image */
-    overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    background-color: #f0f0f0;
+  width: 100%;
+  max-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  background-color: #f5f5f5; /* fallback bg */
 }
 
 .modal-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;  /* This is key */
+  display: block;
 }
 
+
 .modal-content h2 {
-    font-size: 2rem;
-    color: #1a237e;
-    margin-bottom: 1rem;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
+  font-size: 1.8rem;
+  color: #1a237e;
+  margin: 1rem 0 0.8rem;
+  font-weight: 600;
 }
 
 .modal-content p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #666;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  padding: 0 1rem;
 }
 
 .modal-footer {
-    width: 100%;
-    text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-action-btn {
-    background-color: #007bff;
-    color: white;
-    font-weight: 600;
-    padding: 0.9rem 2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .modal-action-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Close Button Style */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #000;
 }
 
 /* --- Responsive Adjustments --- */
@@ -387,6 +382,7 @@
     .modal-content {
         padding: 2rem;
         border-radius: 15px;
+         
     }
 
     .modal-img-wrapper {

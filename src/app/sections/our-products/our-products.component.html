@@ -13,18 +13,12 @@
         </div>
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
-        <a (click)="showDetails(product)"
-          >Read more
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            width="20"
-            height="20"
-          >
+        <a href="javascript:void(0)" (click)="showDetails(product)">
+          Read more
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="currentColor" width="20" height="20">
             <path
-              d="M16.172 11L10.808 5.636L12.222 4.222L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z"
-            />
+              d="M16.172 11L10.808 5.636L12.222 4.222L20 12L12.222 19.778L10.808 18.364L16.172 13H4V11H16.172Z" />
           </svg>
         </a>
       </div>
@@ -36,7 +30,9 @@
   </div>
 </div>
 
-<div class="product-modal" *ngIf="selectedProduct">
+<!-- MODAL -->
+ <div class="modal-text">
+<div class="product-modal" *ngIf="selectedProduct" [ngClass]="{'show': selectedProduct}">
   <div class="modal-content">
     <button class="close-btn" (click)="closeDetails()">×</button>
     <div class="modal-img-wrapper">
@@ -48,4 +44,5 @@
       <button class="modal-action-btn" (click)="closeDetails()">Got it!</button>
     </div>
   </div>
+</div>
 </div>
