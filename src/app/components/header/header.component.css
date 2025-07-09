@@ -1,10 +1,16 @@
 /* Navbar styles */
+.navbar-toggler {
+    margin-right: 10px;
+}
 .navbar {
-  background-color: #eaf6f8 !important;
+  background-color: rgb(52 173 255) !important;
   height: 80px;
   animation: fadeSlideDown 0.8s ease-in-out;
 }
-
+/* 
+.navbar-toggler{
+border:0.5px solid var(--bs-border-width) solid rgba(255, 255, 255, 0.7) !important;
+} */
 /* Logo animation */
 .navbar img {
   width: 150px;
@@ -25,7 +31,7 @@
 
 /* Nav link styles */
 .navbar-nav > li > a {
-  color: #10247d !important;
+  color: #10247d ;
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
   animation: fadeInUp 1.2s ease;
@@ -62,4 +68,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+@media (max-width: 992px) {
+.navbar{
+    height: 100px ;
+}
+.navbar-nav{
+    background-color: #95CDD6;
+}
+li.nav-item {
+    padding: 0px 20px;
+}
+li.nav-item > a{
+        color: #10247d !important;
+        font-size: 16px;
+        font-weight: 400;
+
+}
 }
